@@ -3,15 +3,14 @@ import Bestuur from "./pages/Bestuur.js";
 import Nieuws from "./pages/nieuws.js";
 import OverOns from "./pages/OverOns.js";
 import Activiteiten from "./pages/Activiteiten.js";
-import Contact from "./pages/contact.js";
 import Footer from "./components/footer.js";
 import Header from "./components/header.js";
+import Four04 from "./pages/404.js";
 
 // Routing en pagina rendering
 const routes = {
     '': renderHome,
     'Home': renderHome,
-    'Contact': renderContact,
     'Bestuur': renderBestuur,
     'Nieuws': renderNieuws,
     'Activiteiten': renderActiviteiten,
@@ -34,17 +33,6 @@ function renderHome() {
     }
     app.innerHTML = '';
     Home();
-}
-
-function renderContact() {
-    const app = document.getElementById('root');
-    if (!app) {
-        app = document.createElement('main');
-        app.id = 'root';
-        document.body.appendChild(app);
-    }
-    app.innerHTML = '';
-    Contact();
 }
 
 function renderBestuur() {
@@ -98,7 +86,8 @@ function renderNotFound() {
         app.id = 'root';
         document.body.appendChild(app);
     }
-    app.innerHTML = '<h1>404</h1><p>Page not found.</p>';
+    app.innerHTML = '';
+    Four04();
 }
 
 function router() {

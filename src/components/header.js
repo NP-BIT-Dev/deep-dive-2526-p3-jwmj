@@ -18,8 +18,7 @@ const Header = () => {
                     <li><a href="/Nieuws" class="px-5 py-2 rounded-full text-gray-600 font-medium hover:bg-brand-light hover:text-brand-green transition-all">Nieuws</a></li>
                     <li><a href="/Activiteiten" class="px-5 py-2 rounded-full text-gray-600 font-medium hover:bg-brand-light hover:text-brand-green transition-all">Activiteiten</a></li>
                     <li><a href="/Bestuur" class="px-5 py-2 rounded-full text-gray-600 font-medium hover:bg-brand-light hover:text-brand-green transition-all">Bestuur</a></li>
-                    <li><a href="/OverOns" class="px-5 py-2 rounded-full text-gray-600 font-medium hover:bg-brand-light hover:text-brand-green transition-all">Over Ons</a></li>
-                    <li><a href="/Contact" class="px-5 py-2 rounded-full text-gray-600 font-medium hover:bg-brand-light hover:text-brand-green transition-all">Contact</a></li>
+                    <li><a href="/OverOns" class="px-5 py-2 rounded-full text-gray-600 font-medium hover:bg-brand-light hover:text-brand-green transition-all">Over ons</a></li>
                 </ul>
 
                 <button id="mobile-menu-btn" class="md:hidden flex flex-col space-y-1.5 p-2 focus:outline-none">
