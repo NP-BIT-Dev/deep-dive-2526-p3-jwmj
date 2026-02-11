@@ -28,11 +28,14 @@ async def create_news_with_images(
     db.flush()
 
     for file in files:
-        file_path = f"{UPLOAD_DIR}/{file.filename}"
-        with open(file_path, "wb") as buffer:
+        file_save_path = os.path.join(UPLOAD_DIR, file.filename)
+
+        with open(file_save_path, "wb") as buffer:
             shutil.copyfileobj(file.file, buffer)
+
+        web_path = f"news_images/{file.filename}"
         
-        db_image = NewsImageModel(file_path=file_path, news_id=new_post.id)
+        db_image = NewsImageModel(file_path=web_path, news_id=new_post.id)
         db.add(db_image)
 
     db.commit()
