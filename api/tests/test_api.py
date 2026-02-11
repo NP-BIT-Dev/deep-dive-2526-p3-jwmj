@@ -22,7 +22,7 @@ def test_health_check_endpoint():
     """
     response = CLIENT.get("/api/v1/health")
     assert response.status_code == 200
-    assert response.json() == {"status": "API status"}  # Assuming a simple status response. [8]
+    assert response.json() == {"status": "ok"}  # Assuming a simple status response. [8]
 
 
 def test_news_crud_flow():
