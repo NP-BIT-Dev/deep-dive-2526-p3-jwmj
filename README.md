@@ -26,7 +26,7 @@ python -m venv .venv
 source .venv/bin/activate
 
 # Install requirements
-pip install -r requirements.txt
+pip install -r /api/requirements.txt
 
 # Run api
 py ./api/main.py 
