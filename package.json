@@ -1,0 +1,17 @@
+{
+  "name": "schrijvershoekdeepdive",
+  "version": "1.0.0",
+  "description": "ik was te lui om iets te schijven hier",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch",
+    "setup": "touch ./src/output.css && npm i tailwindcss"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^4.1.18"
+  }
+}
