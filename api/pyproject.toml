@@ -27,6 +27,7 @@ max-line-length = 100 # Increased slightly to handle those 89-94 character lines
 [tool.pytest.ini_options]
 # Look for tests in the 'tests' folder
 testpaths = ["tests"]
+pythonpath = ["."]
 # Automatically treat functions starting with 'test_' as a test
 python_functions = "test_*"
 # Enable async support for FastAPI

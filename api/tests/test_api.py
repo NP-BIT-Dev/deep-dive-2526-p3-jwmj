@@ -8,7 +8,7 @@ import pytest
 # This is a common convention.
 try:
     # We are assuming the app is created in `api/main.py`
-    from api.main import app
+    from main import app
     CLIENT = TestClient(app)
 except (ModuleNotFoundError, ImportError):
     # If the app cannot be imported, we skip the tests.
