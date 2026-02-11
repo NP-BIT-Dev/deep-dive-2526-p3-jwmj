@@ -13,8 +13,6 @@ const Bestuur = () => {
         <div class="rounded-lg p-6 flex items-center justify-between mb-8 max-w-7xl">
             ${ (() => { let result = ''; for(let i = 0; i <= 4; i++) { result += personen(); } return result; })() }
         </div>
-
-        
      </div>
     `;
 }
