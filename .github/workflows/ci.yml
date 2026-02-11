@@ -32,12 +32,12 @@ jobs:
             - name: Install dependencies
               run: |
                 python -m pip install --upgrade pip
-                pip install pylint pytest httpx
+                pip install pylint pytest pytest-asyncio httpx
                 if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
             - name: Analysing the code with pylint
               run: |
-                pylint $(git ls-files | grep '\.py$') --fail-under=8.0
+                pylint main.py routers utils services models tests --fail-under=8.0
 
             - name: Run tests with Pytest
               env:
