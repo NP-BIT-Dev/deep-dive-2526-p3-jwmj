@@ -1,6 +1,7 @@
 from typing import List
 import os
 import shutil
+from pathlib import Path
 from fastapi import APIRouter, HTTPException, Depends, UploadFile, File, Form
 from sqlalchemy.orm import Session
 from utils.database import get_db
@@ -10,8 +11,8 @@ from services import news_service
 
 router = APIRouter(prefix="/news")
 
-UPLOAD_DIR = "api/static/news_images"
-os.makedirs(UPLOAD_DIR, exist_ok=True)
+UPLOAD_DIR = Path(__file__).resolve().parent.parent.parent / "static" / "news_images"
+UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
 @router.get("/", response_model=List[NewsResponse])
 def read_news(db: Session = Depends(get_db)):
@@ -28,14 +29,14 @@ async def create_news_with_images(
     db.flush()
 
     for file in files:
-        file_save_path = os.path.join(UPLOAD_DIR, file.filename)
-
+        clean_name = file.filename.replace(" ", "_")
+        file_save_path = UPLOAD_DIR / clean_name
+    
         with open(file_save_path, "wb") as buffer:
             shutil.copyfileobj(file.file, buffer)
-
-        web_path = f"news_images/{file.filename}"
-        
-        db_image = NewsImageModel(file_path=web_path, news_id=new_post.id)
+    
+        db_path = f"static/news_images/{clean_name}"
+        db_image = NewsImageModel(file_path=db_path, news_id=new_post.id)
         db.add(db_image)
 
     db.commit()

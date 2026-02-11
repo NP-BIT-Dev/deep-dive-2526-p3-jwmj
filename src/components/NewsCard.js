@@ -1,4 +1,5 @@
 const NewsCard = (item) => {
+    const STATIC_URL = "http://127.0.0.1:8000/";
     const date = new Date(item.date_posted);
     const formattedDate = date.toLocaleDateString('nl-NL', {
         day: 'numeric',
@@ -7,7 +8,7 @@ const NewsCard = (item) => {
     });
     
     const imageUrl = item.images && item.images.length > 0 
-        ? `/${item.images[0].file_path}` 
+        ? `${STATIC_URL}${item.images[0].file_path}` 
         : null;
 
     return `
