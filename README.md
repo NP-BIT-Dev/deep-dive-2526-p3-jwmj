@@ -10,7 +10,7 @@ then run the index page with liveserver
 # Python API Setup Guide
 
 ## Pylint
-![Pylint Status](https://github.com/NP-BIT-Dev/deep-dive-2526-p3-jwmj/actions/workflows/pylint.yml/badge.svg)
+![Pylint Status](https://github.com/NP-BIT-Dev/deep-dive-2526-p3-jwmj/actions/workflows/ci.yml/badge.svg)
 [![Pylint Score](https://img.shields.io/badge/pylint-8.0%2B-blue?logo=python&logoColor=white)](https://github.com/NP-BIT-Dev/deep-dive-2526-p3-jwmj/actions)
 
 To set up the environment and install dependencies, run the following commands in your terminal:
