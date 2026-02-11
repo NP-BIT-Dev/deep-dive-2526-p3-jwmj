@@ -216,3 +216,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+# Tailwind CSS output file and node modules
+node_modules/
+src/output.css
