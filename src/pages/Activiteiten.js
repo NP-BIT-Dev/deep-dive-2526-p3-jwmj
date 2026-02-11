@@ -66,13 +66,13 @@ const ActivityCard = (activity) => {
                 ${iconPath}
             </svg>
         </div>
-        <h3 class="text-xl font-semibold text-gray-800 mb-2">${activity.title}</h3>
-        <p class="text-gray-600 mb-4">${activity.description}</p>
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">${activity.activity}</h3>
+        <p class="text-gray-600 mb-4">${activity.locatie}</p>
         <div class="flex items-center text-sm text-cyaan">
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
-            ${activity.schedule}
+            ${activity.datum}
         </div>
     </div>`;
 }
