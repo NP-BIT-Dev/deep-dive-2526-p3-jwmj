@@ -1,5 +1,6 @@
 from fastapi.testclient import TestClient
 import pytest
+import io
 from main import app
 
 CLIENT = TestClient(app)
@@ -14,21 +15,23 @@ def test_news_crud_flow():
     assert initial_response.status_code == 200
     initial_news_count = len(initial_response.json())
 
-    new_news_data = {
-        "title": "A Brand New Article", 
-        "content": "Here is some news.",
-        "pictures": [
-            {"url": "https://picsum.photos/200", "description": "Test Image"}
-        ]
-    }
-    post_response = CLIENT.post("/api/v1/news", json=new_news_data)
-    assert post_response.status_code == 201
+    file_content = b"fake image content"
+    file_name = "test_image.jpg"
     
-    created_item = post_response.json()
-    news_id = created_item["id"]
+    post_response = CLIENT.post(
+        "/api/v1/news/",
+        data={"title": "A Brand New Article"},
+        files=[("files", (file_name, io.BytesIO(file_content), "image/jpeg"))]
+    )
+    
+    assert post_response.status_code == 200
+    assert post_response.json()["message"] == "Nieuws met foto's geüpload!"
 
-    get_response = CLIENT.get("/api/v1/news")
-    assert len(get_response.json()) == initial_news_count + 1
+    get_all = CLIENT.get("/api/v1/news")
+    news_list = get_all.json()
+    assert len(news_list) == initial_news_count + 1
+    
+    news_id = news_list[-1]["id"]
 
     delete_response = CLIENT.delete(f"/api/v1/news/{news_id}")
     assert delete_response.status_code in [200, 204]
