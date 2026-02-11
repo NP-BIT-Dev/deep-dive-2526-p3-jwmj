@@ -1,4 +1,4 @@
-import Home from "./pages/home.js";
+import Home from "./pages/Home.js";
 import Bestuur from "./pages/Bestuur.js";
 import Nieuws from "./pages/nieuws.js";
 import OverOns from "./pages/OverOns.js";
