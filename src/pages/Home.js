@@ -1,14 +1,11 @@
 import Lidmaatschappen from "../components/lidmaatschappen.js";
+import PageBanner from "../components/PageBanner.js";
 
 const Home = (app) => {
     document.title = "Schrijvershoek || Home";
     const root = document.getElementById('root');
     root.innerHTML = `
-    <div class="bg-cyaan/75 py-40 rounded-b-3xl mb-8">
-        <div class="max-w-7xl md:mx-auto px-4 py-8 flex items-center justify-center">
-            <h1 class="text-4xl font-bold text-center text-gray-800 mb-6 my-auto">Schrijvershoek</h1>
-        </div>
-    </div>
+    ${PageBanner("Schrijvershoek")}
     <div class="max-w-7xl  md:mx-auto px-4 py-2 md:py-8">
         <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">Home</h2>
         <div class="rounded-3xl p-2 flex md:flex-row flex-col items-center justify-center mb-8 gap-2">
