@@ -29,7 +29,7 @@ jobs:
         FILES=$(git ls-files '*.py')
 
         if [ -n "$FILES" ]; then
-          pylint $FILES
+          pylint --fail-under=8.0 $FILES
         else
           echo "No Python files found."
         fi

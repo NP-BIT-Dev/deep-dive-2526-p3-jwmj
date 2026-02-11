@@ -7,7 +7,7 @@ class NewsModel(Base):
     __tablename__ = "news"
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, nullable=False)
-    date_posted = Column(DateTime(timezone=True), server_default=func.now())
+    date_posted = Column(DateTime(timezone=True), server_default=func.now()) # pylint: disable=not-callable
     
     images = relationship("NewsImageModel", back_populates="news_item")
 

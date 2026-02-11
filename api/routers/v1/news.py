@@ -1,10 +1,10 @@
+from typing import List
 import os
 import shutil
 from fastapi import APIRouter, HTTPException, Depends, UploadFile, File, Form
 from sqlalchemy.orm import Session
-from typing import List
 from utils.database import get_db
-from schemas.news import NewsCreate, NewsResponse
+from schemas.news import NewsResponse
 from models.news import NewsModel, NewsImageModel
 from services import news_service
 

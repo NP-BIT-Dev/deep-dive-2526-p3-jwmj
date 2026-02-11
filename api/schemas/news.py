@@ -1,6 +1,6 @@
-from pydantic import BaseModel
-from datetime import datetime
 from typing import List
+from datetime import datetime
+from pydantic import BaseModel
 
 class NewsBase(BaseModel):
     title: str
