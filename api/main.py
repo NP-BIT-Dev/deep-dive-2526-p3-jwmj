@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
@@ -9,13 +10,23 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Dorpsvereniging De Schrijvershoek", docs_url=None, redoc_url="/docs")
 
-static_dir = os.path.join(os.path.dirname(__file__), "static")
-app.mount("/static", StaticFiles(directory=static_dir), name="static")
+BASE_DIR = Path(__file__).resolve().parent
+
+static_dir = BASE_DIR / "static"
+
+static_dir.mkdir(parents=True, exist_ok=True)
+
+app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
+
+news_images_dir = static_dir / "news_images"
+news_images_dir.mkdir(parents=True, exist_ok=True)
+app.mount("/news_images", StaticFiles(directory=str(news_images_dir)), name="news_images")
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_methods=["*"],
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
 
