@@ -27,7 +27,12 @@ source .venv/bin/activate
 
 # Install requirements
 pip install -r requirements.txt
+
+# Run api
+py ./api/main.py 
 ```
+
+
 
 ## API Routes
 
