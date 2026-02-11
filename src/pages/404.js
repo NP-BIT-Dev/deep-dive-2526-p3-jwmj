@@ -5,25 +5,13 @@ const Four04 = () => {
         <div class="four04-container">
             <style>
                 .four04-container {
-                    --hue: 223;
-                    --sat: 10%;
-                    --light: hsl(var(--hue), var(--sat), 95%);
-                    --dark: hsl(var(--hue), var(--sat), 5%);
                     --trans-dur: 0.3s;
-                    color-scheme: light dark;
                     font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
-                    background-color: var(--light);
-                    color: var(--dark);
+                    background-color: #ffffff;
+                    color: #000000;
                     display: grid;
                     place-items: center;
                     height: 100vh;
-                    transition: background-color var(--trans-dur), color var(--trans-dur);
-                }
-                @media (prefers-color-scheme: dark) {
-                    .four04-container {
-                        background-color: var(--dark);
-                        color: var(--light);
-                    }
                 }
                 .four04-container main {
                     padding: 1.5em 0;
