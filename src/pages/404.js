@@ -7,8 +7,8 @@ const Four04 = () => {
                 .four04-container {
                     --hue: 223;
                     --sat: 10%;
-                    --light: #ffffff;
-                    --dark: #000000;
+                    --light: hsl(var(--hue), var(--sat), 95%);
+                    --dark: hsl(var(--hue), var(--sat), 5%);
                     --trans-dur: 0.3s;
                     color-scheme: light dark;
                     font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
@@ -21,8 +21,8 @@ const Four04 = () => {
                 }
                 @media (prefers-color-scheme: dark) {
                     .four04-container {
-                        background-color: var(--light);
-                        color: var(--dark);
+                        background-color: var(--dark);
+                        color: var(--light);
                     }
                 }
                 .four04-container main {
@@ -41,12 +41,98 @@ const Four04 = () => {
                 .four04-container .face__pupil {
                     animation: eyes 1s 0.3s cubic-bezier(0.65, 0, 0.35, 1) forwards;
                 }
-                @keyframes eyes {
-                    0% {
-                        opacity: 1;
+                .four04-container .face__eye-lid,
+                .four04-container .face__pupil {
+                    animation-duration: 4s;
+                    animation-delay: 1.3s;
+                    animation-iteration-count: infinite;
+                }
+                .four04-container .face__eye-lid {
+                    animation-name: eye-lid;
+                }
+                .four04-container .face__mouth-left,
+                .four04-container .face__mouth-right {
+                    animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+                }
+                .four04-container .face__mouth-left {
+                    animation-name: mouth-left;
+                }
+                .four04-container .face__mouth-right {
+                    animation-name: mouth-right;
+                }
+                .four04-container .face__nose {
+                    animation-name: nose;
+                }
+                .four04-container .face__pupil {
+                    animation-name: pupil;
+                }
+
+                /* Animations */
+                @keyframes eye-lid {
+                    from,
+                    40%,
+                    45%,
+                    to {
+                        transform: translateY(0);
                     }
-                    100% {
-                        opacity: 1;
+                    42.5% {
+                        transform: translateY(17.5px);
+                    }
+                }
+                @keyframes eyes {
+                    from {
+                        transform: translateY(112.5px);
+                    }
+                    to {
+                        transform: translateY(15px);
+                    }
+                }
+                @keyframes pupil {
+                    from,
+                    37.5%,
+                    40%,
+                    45%,
+                    87.5%,
+                    to {
+                        stroke-dashoffset: 0;
+                        transform: translate(0, 0);
+                    }
+                    12.5%,
+                    25%,
+                    62.5%,
+                    75% {
+                        stroke-dashoffset: 0;
+                        transform: translate(-35px, 0);
+                    }
+                    42.5% {
+                        stroke-dashoffset: 35;
+                        transform: translate(0, 17.5px);
+                    }
+                }
+                @keyframes mouth-left {
+                    from,
+                    50% {
+                        stroke-dashoffset: -102;
+                    }
+                    to {
+                        stroke-dashoffset: 0;
+                    }
+                }
+                @keyframes mouth-right {
+                    from,
+                    50% {
+                        stroke-dashoffset: 102;
+                    }
+                    to {
+                        stroke-dashoffset: 0;
+                    }
+                }
+                @keyframes nose {
+                    from {
+                        transform: translate(0, 0);
+                    }
+                    to {
+                        transform: translate(0, 22.5px);
                     }
                 }
             </style>
