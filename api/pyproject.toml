@@ -1,0 +1,39 @@
+[project]
+name = "fastapi-api"
+version = "0.1.0"
+description = "FastAPI project with automated CI"
+requires-python = ">=3.10"
+
+[tool.pylint.master]
+# This solves the 'Unable to import' (E0401) errors by helping Pylint find your folders
+init-hook = "import sys; sys.path.append('.')"
+
+[tool.pylint.messages_control]
+disable = [
+    "no-name-in-module",
+    "no-self-argument",    # Required for Pydantic @validator
+    "missing-module-docstring",
+    "missing-function-docstring",
+    "missing-class-docstring",
+    "too-few-public-methods", # Stops Pylint from complaining about your Models/Schemas
+    "wrong-import-order",     # Stops the SQLAlchemy vs Local import noise
+    "trailing-whitespace",    # Optional: if you don't want to manually clean every line
+    "C0111",                  # missing-docstring
+]
+
+[tool.pylint.format]
+max-line-length = 100 # Increased slightly to handle those 89-94 character lines you have
+
+[tool.pytest.ini_options]
+# Look for tests in the 'tests' folder
+testpaths = ["tests"]
+pythonpath = ["."]
+# Automatically treat functions starting with 'test_' as a test
+python_functions = "test_*"
+# Enable async support for FastAPI
+asyncio_mode = "auto"
+
+[tool.mypy]
+# Essential for FastAPI's type-safety
+ignore_missing_imports = true
+strict = true
