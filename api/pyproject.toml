@@ -1,0 +1,31 @@
+[project]
+name = "fastapi-api"
+version = "0.1.0"
+description = "FastAPI project with automated CI"
+requires-python = ">=3.10"
+
+[tool.pylint.messages_control]
+# Disable some overly-strict rules that clash with FastAPI/Pydantic
+disable = [
+    "no-name-in-module",
+    "no-self-argument", # Pydantic validators use 'cls' or 'v'
+    "missing-module-docstring",
+    "missing-function-docstring",
+    "C0111", # missing-docstring
+]
+
+[tool.pylint.format]
+max-line-length = 88 # Matches the "Black" formatting standard
+
+[tool.pytest.ini_options]
+# Look for tests in the 'tests' folder
+testpaths = ["tests"]
+# Automatically treat functions starting with 'test_' as a test
+python_functions = "test_*"
+# Enable async support for FastAPI
+asyncio_mode = "auto"
+
+[tool.mypy]
+# Essential for FastAPI's type-safety
+ignore_missing_imports = true
+strict = true
