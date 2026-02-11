@@ -5,6 +5,7 @@ import OverOns from "./pages/OverOns.js";
 import Activiteiten from "./pages/Activiteiten.js";
 import Footer from "./components/footer.js";
 import Header from "./components/header.js";
+import Four04 from "./pages/404.js";
 
 // Routing en pagina rendering
 const routes = {
@@ -85,7 +86,8 @@ function renderNotFound() {
         app.id = 'root';
         document.body.appendChild(app);
     }
-    app.innerHTML = '<h1>404</h1><p>Page not found.</p>';
+    app.innerHTML = '';
+    Four04();
 }
 
 function router() {
