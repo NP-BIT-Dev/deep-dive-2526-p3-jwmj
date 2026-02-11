@@ -11,8 +11,8 @@ const Home = (app) => {
     </div>
     <div class="max-w-7xl mx-auto px-4 py-8">
         <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">Home</h2>
-        <div class="rounded-lg p-6 flex items-center justify-center mb-8">
-            <div class="flex items-center justify-center bg-gray-100 rounded-lg w-1/2 min-h-87">
+        <div class="rounded-3xl p-6 flex items-center justify-center mb-8">
+            <div class="flex items-center justify-center bg-gray-100 rounded-3xl w-1/2 min-h-87">
                 <p>placeholder</p>
             </div>
             <div class="ml-6 w-1/2 flex flex-col justify-between">
@@ -27,8 +27,8 @@ const Home = (app) => {
     </div>
     <div class="max-w-7xl mx-auto px-4 py-8">
         <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">Lidmaatschappen</h2>
-        <div class="rounded-lg p-6 flex items-center justify-center mb-8">
-            ${Lidmaatschappen()}
+        <div class="rounded-3xl p-6 flex items-center justify-center mb-8">
+            ${ (() => { let result = ''; for(let i = 0; i <= 2; i++) { result += Lidmaatschappen(i, "Beschrijving van lidmaatschap " + i, "€10 per maand", ["Voordeel 1", "Voordeel 2", "Voordeel 3"], "#"); } return result; })() }
         </div>
     </div>
     `;

@@ -10,7 +10,7 @@ from services import news_service
 
 router = APIRouter(prefix="/news")
 
-UPLOAD_DIR = "static/news_images"
+UPLOAD_DIR = "api/static/news_images"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 @router.get("/", response_model=List[NewsResponse])

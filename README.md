@@ -1,5 +1,12 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/P7mjNSSK)
 
+# how to run tailwind
+
+cli run ```npm i```
+then run ```npm run setup```
+then run ```npm run watch```
+then run the index page with liveserver
+
 # Python API Setup Guide
 
 ## Pylint
@@ -19,8 +26,13 @@ python -m venv .venv
 source .venv/bin/activate
 
 # Install requirements
-pip install -r requirements.txt
+pip install -r /api/requirements.txt
+
+# Run api
+py ./api/main.py 
 ```
+
+
 
 ## API Routes
 
