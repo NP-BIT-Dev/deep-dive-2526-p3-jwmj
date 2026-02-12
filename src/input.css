@@ -7,6 +7,373 @@ body {
     margin: 0;
     padding: 0;
 }
+
+/* ===== GLOBAL ANIMATIONS ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+        filter: blur(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+        filter: blur(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes expandFromButton {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(13, 136, 114, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 20px 5px rgba(13, 136, 114, 0.2);
+    }
+}
+
+@keyframes motionBlurIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+        filter: blur(8px);
+    }
+    60% {
+        filter: blur(2px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* ===== NAVIGATION STYLES ===== */
+.nav-pill {
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-item {
+    animation: slideInFromLeft 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: calc(var(--item-index) * 0.1s);
+    opacity: 0;
+}
+
+.nav-link {
+    position: relative;
+    display: inline-block;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #0d8872, transparent);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 80%;
+}
+
+.nav-link:hover {
+    transform: translateY(-1px);
+}
+
+.logo-text {
+    background: linear-gradient(135deg, #0d8872, #0d8872);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Mobile nav animations */
+.mobile-nav-item {
+    animation: slideInFromLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: calc(var(--mobile-index) * 0.08s);
+}
+
+/* ===== SEARCH STYLES ===== */
+.search-overlay {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-overlay:not(.hidden) {
+    animation: motionBlurIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#global-search:focus {
+    box-shadow: 0 0 0 4px rgba(13, 136, 114, 0.1);
+}
+
+/* ===== BANNER STYLES ===== */
+.page-banner {
+    position: relative;
+    overflow: hidden;
+    animation: fadeInScale 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-banner-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-banner:hover .page-banner-bg {
+    transform: scale(1.02);
+}
+
+.page-banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(13, 136, 114, 0.85), rgba(13, 136, 114, 0.7));
+    backdrop-filter: blur(2px);
+}
+
+.page-banner-content {
+    position: relative;
+    z-index: 10;
+}
+
+/* ===== BUTTON EXPANDING POPUP ===== */
+.expand-btn {
+    position: relative;
+    overflow: visible;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.expand-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px -10px rgba(13, 136, 114, 0.5);
+}
+
+.expand-btn:active {
+    transform: scale(0.98);
+}
+
+.expand-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.expand-popup.active {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.expand-popup-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.expand-popup-content {
+    position: relative;
+    transform: scale(0.3);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.expand-popup.active .expand-popup-content {
+    transform: scale(1);
+    opacity: 1;
+    animation: expandFromButton 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ===== CARD STYLES ===== */
+.card {
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+.card-stagger {
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: calc(var(--card-index) * 0.1s);
+    opacity: 0;
+}
+
+/* ===== MEMBERSHIP CARD STYLES ===== */
+.membership-card {
+    animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation-delay: calc(var(--card-index) * 0.15s);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.membership-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 30px 60px -15px rgba(13, 136, 114, 0.25);
+}
+
+/* ===== BLUR EFFECTS ===== */
+.blur-sm-hover {
+    transition: filter 0.3s ease;
+}
+
+.blur-sm-hover:hover {
+    filter: blur(0);
+}
+
+.motion-blur-transition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 0.15s ease;
+}
+
+.motion-blur-transition:hover {
+    filter: blur(0.5px);
+}
+
+.motion-blur-transition:not(:hover) {
+    filter: blur(0);
+}
+
+/* Glassmorphism effects */
+.glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-dark {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ===== SEARCH BAR IN PAGES ===== */
+.page-search {
+    position: relative;
+    animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-search input {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-search input:focus {
+    box-shadow: 0 0 0 4px rgba(13, 136, 114, 0.15);
+    transform: scale(1.01);
+}
+
+/* ===== BANNER IMAGE UPLOAD ===== */
+.banner-upload-zone {
+    position: relative;
+    border: 2px dashed rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.banner-upload-zone:hover {
+    border-color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.banner-upload-zone.dragover {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.02);
+}
+
+/* ===== UTILITY CLASSES ===== */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .dropdown-menu {
     display: none;
     position: absolute;
@@ -31,12 +398,12 @@ body {
 }
 
 @theme {
-    --color-cyaan: #0d8872;
-    --color-bruin: #b53636;
-    --color-blauw: #0082fd;
-    --color-grijs: #9a9a9a;
+    --color-cyaan: #0a705e;
+    --color-bruin: #9c2f2f;
+    --color-blauw: #0070db;
+    --color-grijs: #8a8a8a;
     --color-zwart: #131313;
-    --color-rood: #ff0000;
+    --color-rood: #e00000;
     --color-wit: #ffffff;
 }
 
