@@ -1,5 +1,5 @@
 from typing import List
-from fastapi import APIRouter, HTTPException, Depends
+from fastapi import APIRouter, HTTPException, Depends, Form
 from sqlalchemy.orm import Session
 from utils.database import get_db
 from schemas.activities import ActivityResponse, ActivityCreate
@@ -14,10 +14,12 @@ def read_activities(db: Session = Depends(get_db)):
 
 @router.post("/")
 async def create_activity(
-    activity_data: ActivityCreate,
+    activity: str = Form(...),
+    datum: str = Form(...),
+    locatie: str = Form(...),
     db: Session = Depends(get_db)
 ):
-    new_post = ActivityModel(datum=activity_data.datum, activiteit=activity_data.activity, locatie=activity_data.locatie)
+    new_post = ActivityModel(datum=datum, activiteit=activity, locatie=locatie)
     db.add(new_post)
     db.flush()
 

@@ -7,7 +7,7 @@ const personen = (name = "Naam", role = "Functie", index = 0, imagePath = null, 
                         </svg>
                     </div>`;
     
-    const quoteText = quote ? `"${quote}"` : '"Citaat placeholder"';
+    const quoteText = quote ? `"${quote}"` : '"Had geen airfryer :("';
     
     return `
     <div class="card-stagger group" style="--card-index: ${index};">
