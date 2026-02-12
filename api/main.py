@@ -7,7 +7,7 @@ from routers.v1 import router as v1_router
 
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="Dorpsvereniging De Schrijvershoek", docs_url=None, redoc_url="/docs")
+app = FastAPI(title="Dorpsvereniging De Schrijvershoek", docs_url="/docs", redoc_url="/redocs")
 
 BASE_DIR = Path(__file__).resolve().parent
 
