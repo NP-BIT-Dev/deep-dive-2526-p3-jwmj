@@ -98,7 +98,8 @@ const checkSearchEasterEgg = (query) => {
         'konijn': { message: 'Je vond het konijnenhol!', icon: '^.^' },
         'matrix': { message: 'Er is geen lepel...', icon: '{ }' },
         'noot mansen': { message: 'De legende leeft!', icon: '#1' },
-        '404': { action: 'chaos404' }
+        '404': { action: 'chaos404' },
+        'epstein': { action: 'redirect', url: 'https://www.justice.gov/epstein' }
     };
     
     const egg = easterEggs[query];
@@ -110,6 +111,8 @@ const checkSearchEasterEgg = (query) => {
             triggerDiscoMode();
         } else if (egg.action === 'chaos404') {
             triggerChaos404();
+        } else if (egg.action === 'redirect') {
+            window.open(egg.url, '_blank');
         } else {
             showEasterEggToast(egg.message, egg.icon);
         }
