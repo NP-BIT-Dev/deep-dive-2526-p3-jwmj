@@ -15,6 +15,8 @@ then run the index page with liveserver
 
 To set up the environment and install dependencies, run the following commands in your terminal:
 
+!! Tested on Python 3.10, 3.11, 3.12 & 3.13 !!
+
 ```bash
 # Create a virtual environment
 python -m venv .venv
