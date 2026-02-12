@@ -1,10 +1,10 @@
-from typing import List
+from typing import List, Optional
 import shutil
 from pathlib import Path
 from fastapi import APIRouter, HTTPException, Depends, UploadFile, File, Form
 from sqlalchemy.orm import Session
 from utils.database import get_db
-from schemas.news import NewsResponse
+from schemas.news import NewsResponse, NewsBase
 from models.news import NewsModel, NewsImageModel
 from services import news_service
 
@@ -17,13 +17,20 @@ UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 def read_news(db: Session = Depends(get_db)):
     return news_service.get_all_news(db)
 
+def get_news_form(
+    title: str = Form(...),
+    description: Optional[str] = Form(None),
+    content: Optional[str] = Form(None),
+) -> NewsBase:
+    return NewsBase(title=title, description=description, content=content)
+
 @router.post("/")
 async def create_news_with_images(
-    title: str = Form(...), 
+    news_data: NewsBase = Depends(get_news_form),
     files: List[UploadFile] = File(...), 
     db: Session = Depends(get_db)
 ):
-    new_post = NewsModel(title=title)
+    new_post = NewsModel(**news_data.model_dump(exclude_unset=True))
     db.add(new_post)
     db.flush()
 
