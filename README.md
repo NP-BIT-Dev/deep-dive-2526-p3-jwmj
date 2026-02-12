@@ -48,3 +48,5 @@ The following routes are available in this application:
 | DELETE | `/api/v1/news/{news_id}` | Delete a news item |
 | GET    | `/api/v1/activities` | Retrive a list of all activity items |
 | POST    | `/api/v1/activities`  | Create a new activity item |
+| GET    | `/api/v1/bestuurders` | Retrive a list of all bestuurders items |
+| POST    | `/api/v1/bestuurders`  | Create a new bestuurders item |

@@ -94,10 +94,6 @@ const OverOns = () => {
                     </form>
                 </div>
                 
-<<<<<<< HEAD
-                <div class="mt-8 bg-gray-100 rounded-3xl h-64 flex items-center justify-center overflow-hidden">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38267.662877271454!2d6.786994260989301!3d53.16890287033707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b7d4ea3866f8ff%3A0xb09ca3d949ee754f!2sZuidbroek!5e0!3m2!1sen!2snl!4v1770886995866!5m2!1sen!2snl" width="600" height="256" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-=======
                 <div>
                     <h2 class="text-2xl font-bold text-gray-800 mb-6">Contactgegevens</h2>
                     <div class="card bg-white rounded-3xl shadow-lg p-6 space-y-6">
@@ -139,11 +135,10 @@ const OverOns = () => {
                     
                     <div class="mt-8 card bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl h-64 flex items-center justify-center shadow-lg overflow-hidden group">
                         <div class="relative w-full h-full flex items-center justify-center">
-                            <p class="text-gray-400">Kaart placeholder</p>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38267.662877271454!2d6.786994260989301!3d53.16890287033707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b7d4ea3866f8ff%3A0xb09ca3d949ee754f!2sZuidbroek!5e0!3m2!1sen!2snl!4v1770886995866!5m2!1sen!2snl" width="600" height="256" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             <div class="absolute inset-0 bg-gradient-to-t from-cyaan/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
                     </div>
->>>>>>> 560ad97cebb4b665a368bd851ff526834d8e4d02
                 </div>
             </div>
         </div>

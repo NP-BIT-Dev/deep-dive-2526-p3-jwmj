@@ -1,15 +1,15 @@
 from typing import Optional
 from pydantic import BaseModel
 
-class bestuurdersBase(BaseModel):
+class BestuurderBase(BaseModel):
     name: str
     role: str
     quote: Optional[str] = None
 
-class bestuurdersCreate(bestuurdersBase):
-    pass
+class BestuurderCreate(BestuurderBase):
+    file: str
 
-class bestuurdersResponse(bestuurdersBase):
+class BestuurderResponse(BestuurderBase):
     id: int
     image_path: str
 

@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String
 from utils.database import Base
 
-class bestuurdersModel(Base):
+class BestuurderModel(Base):
     __tablename__ = "bestuurders"
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)

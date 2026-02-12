@@ -1,15 +1,15 @@
 import os
 from pathlib import Path
 from sqlalchemy.orm import Session
-from models.bestuurders import bestuurdersModel
+from models.bestuurders import BestuurderModel
 
 STATIC_DIR = Path(__file__).resolve().parent.parent
 
-def get_all_board_members(db: Session):
-    return db.query(bestuurdersModel).all()
+def get_all_bestuurders(db: Session):
+    return db.query(BestuurderModel).all()
 
-def delete_board_member(db: Session, member_id: int):
-    member = db.query(bestuurdersModel).filter(bestuurdersModel.id == member_id).first()
+def delete_bestuurder(db: Session, member_id: int):
+    member = db.query(BestuurderModel).filter(BestuurderModel.id == member_id).first()
     if not member:
         return False
     
