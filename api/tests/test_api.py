@@ -1,5 +1,4 @@
 from fastapi.testclient import TestClient
-import pytest
 import io
 from main import app
 
@@ -43,3 +42,4 @@ def test_delete_non_existent_news_item():
     non_existent_id = 999999
     response = CLIENT.delete(f"/api/v1/news/{non_existent_id}")
     assert response.status_code == 404
+    

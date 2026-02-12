@@ -8,3 +8,4 @@ class BestuurderModel(Base):
     role = Column(String, nullable=False)
     quote = Column(String, nullable=True)
     image_path = Column(String, nullable=False)
+    

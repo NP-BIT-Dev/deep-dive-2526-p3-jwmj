@@ -2,7 +2,7 @@ from typing import List
 from fastapi import APIRouter, HTTPException, Depends, Form
 from sqlalchemy.orm import Session
 from utils.database import get_db
-from schemas.activities import ActivityResponse, ActivityCreate
+from schemas.activities import ActivityResponse
 from models.activities import ActivityModel
 from services import activities_service
 
