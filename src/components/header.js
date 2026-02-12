@@ -221,17 +221,39 @@ const initHeaderInteractions = () => {
                         'board': '#/Bestuur',
                         'over ons': '#/OverOns',
                         'about': '#/OverOns',
-                        'contact': '#/Contact'
+                        'contact': '#/OverOns',
+                        // OverOns contact keywords
+                        'email': '#/OverOns',
+                        'e-mail': '#/OverOns',
+                        'mail': '#/OverOns',
+                        'adres': '#/OverOns',
+                        'address': '#/OverOns',
+                        'locatie': '#/OverOns',
+                        'location': '#/OverOns',
+                        'telefoon': '#/OverOns',
+                        'phone': '#/OverOns',
+                        'telefoonnummer': '#/OverOns',
+                        'bellen': '#/OverOns',
+                        'contactgegevens': '#/OverOns',
+                        'schrijvershoekstraat': '#/OverOns'
                     };
                     
                     // Check for exact page match
                     if (pages[query]) {
                         window.location.hash = pages[query];
                     } else {
-                        // Navigate to Nieuws page with search query
-                        window.location.hash = '#/Nieuws';
-                        // Store search query for Nieuws page to pick up
-                        sessionStorage.setItem('globalSearchQuery', query);
+                        // Check for partial matches on contact info
+                        const contactKeywords = ['email', 'mail', 'adres', 'telefoon', 'phone', 'contact', 'locatie'];
+                        const isContactSearch = contactKeywords.some(keyword => query.includes(keyword));
+                        
+                        if (isContactSearch) {
+                            window.location.hash = '#/OverOns';
+                        } else {
+                            // Navigate to Nieuws page with search query
+                            window.location.hash = '#/Nieuws';
+                            // Store search query for Nieuws page to pick up
+                            sessionStorage.setItem('globalSearchQuery', query);
+                        }
                     }
                     collapseSearch();
                 }
@@ -251,14 +273,37 @@ const initHeaderInteractions = () => {
                         'nieuws': '#/Nieuws',
                         'activiteiten': '#/Activiteiten',
                         'bestuur': '#/Bestuur',
-                        'over ons': '#/OverOns'
+                        'over ons': '#/OverOns',
+                        'contact': '#/OverOns',
+                        // OverOns contact keywords
+                        'email': '#/OverOns',
+                        'e-mail': '#/OverOns',
+                        'mail': '#/OverOns',
+                        'adres': '#/OverOns',
+                        'address': '#/OverOns',
+                        'locatie': '#/OverOns',
+                        'location': '#/OverOns',
+                        'telefoon': '#/OverOns',
+                        'phone': '#/OverOns',
+                        'telefoonnummer': '#/OverOns',
+                        'bellen': '#/OverOns',
+                        'contactgegevens': '#/OverOns',
+                        'schrijvershoekstraat': '#/OverOns'
                     };
                     
                     if (pages[query]) {
                         window.location.hash = pages[query];
                     } else {
-                        window.location.hash = '#/Nieuws';
-                        sessionStorage.setItem('globalSearchQuery', query);
+                        // Check for partial matches on contact info
+                        const contactKeywords = ['email', 'mail', 'adres', 'telefoon', 'phone', 'contact', 'locatie'];
+                        const isContactSearch = contactKeywords.some(keyword => query.includes(keyword));
+                        
+                        if (isContactSearch) {
+                            window.location.hash = '#/OverOns';
+                        } else {
+                            window.location.hash = '#/Nieuws';
+                            sessionStorage.setItem('globalSearchQuery', query);
+                        }
                     }
                     
                     // Close mobile menu
