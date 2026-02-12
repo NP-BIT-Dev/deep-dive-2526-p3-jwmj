@@ -3,6 +3,9 @@ const Lidmaatschappen = (lidmaatschapNaam, lidmaatschapBeschrijving, lidmaatscha
     const modalId = `aanmelden-${safeNaam.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`;
     const btnId = `btn-${modalId}`;
     
+    const normalizedVoordelen = Array.isArray(voordelen) ? voordelen : [];
+    const hasVoordelen = normalizedVoordelen.length > 0;
+
     return `
         <div class="membership-card max-w-sm w-full mx-auto px-6 py-8 flex flex-col items-center justify-center bg-white shadow-lg rounded-3xl border border-gray-100" style="--card-index: ${cardIndex};">
             <!-- Card Header -->
@@ -20,11 +23,12 @@ const Lidmaatschappen = (lidmaatschapNaam, lidmaatschapBeschrijving, lidmaatscha
             <!-- Description -->
             <p class="text-gray-600 text-center mb-6 leading-relaxed">${lidmaatschapBeschrijving}</p>
             
+            ${hasVoordelen ? `
             <!-- Benefits -->
             <div class="w-full mb-8">
                 <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4 text-center">Voordelen</h3>
                 <ul class="space-y-3">
-                    ${voordelen.map((voordeel) => `
+                    ${normalizedVoordelen.map((voordeel) => `
                         <li class="flex items-center gap-3 text-gray-600">
                             <span class="flex-shrink-0 w-5 h-5 bg-cyaan/10 rounded-full flex items-center justify-center">
                                 <svg class="w-3 h-3 text-cyaan" fill="currentColor" viewBox="0 0 20 20">
@@ -36,6 +40,7 @@ const Lidmaatschappen = (lidmaatschapNaam, lidmaatschapBeschrijving, lidmaatscha
                     `).join('')}
                 </ul>
             </div>
+            ` : ''}
             
             <!-- CTA Button - Simple and direct -->
             <div class="w-full">

@@ -1,6 +1,29 @@
 import Lidmaatschappen from "../components/lidmaatschappen.js";
 import PageBanner from "../components/PageBanner.js";
 
+const Data = {
+    lidmaatschappen: [
+        {
+            name: "Gezinslidmaatschap",
+            description: "Lidmaatschap voor het hele gezin",
+            price: "€15 per maand",
+            benefits: [],
+        },
+        {
+            name: "Persoonlijk lidmaatschap",
+            description: "Lidmaatschap voor individuen",
+            price: "€9,45 per maand",
+            benefits: [],
+        },
+        {
+            name: "Donateur",
+            description: "Donateur vanaf €5,00 per jaar",
+            price: "min €5,00 per jaar",
+            benefits: [],
+        }
+    ]
+}
+
 const Home = (app) => {
     document.title = "Schrijvershoek || Home";
     const root = document.getElementById('root');
@@ -35,9 +58,16 @@ const Home = (app) => {
                 <h2 class="text-3xl font-bold text-gray-800 mb-4">Lidmaatschappen</h2>
             </div>
             <div class="grid md:grid-cols-3 gap-8 items-start pt-8">
-                ${Lidmaatschappen(0, "Beschrijving van lidmaatschap 0", "€10 per maand", ["Voordeel 1", "Voordeel 2", "Voordeel 3"], "#", 0)}
-                ${Lidmaatschappen(1, "Beschrijving van lidmaatschap 1", "€10 per maand", ["Voordeel 1", "Voordeel 2", "Voordeel 3"], "#", 1)}
-                ${Lidmaatschappen(2, "Beschrijving van lidmaatschap 2", "€10 per maand", ["Voordeel 1", "Voordeel 2", "Voordeel 3"], "#", 2)}
+                ${Data.lidmaatschappen.map((lidmaatschap, index) => 
+                    Lidmaatschappen(
+                        lidmaatschap.name,
+                        lidmaatschap.description,
+                        lidmaatschap.price,
+                        lidmaatschap.benefits,
+                        "#",
+                        index
+                    )
+                ).join('')}
             </div>
         </div>
     </div>
