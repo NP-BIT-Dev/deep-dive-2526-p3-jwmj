@@ -1,3 +1,127 @@
+// Easter egg functions
+const showEasterEggToast = (message, icon = '*') => {
+    const existing = document.getElementById('easter-egg-toast');
+    if (existing) existing.remove();
+    
+    const toast = document.createElement('div');
+    toast.id = 'easter-egg-toast';
+    toast.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-8 z-[9999] animate-bounce-in border-2 border-cyaan';
+    toast.innerHTML = `
+        <div class="text-center">
+            <div class="text-6xl mb-4 font-black text-cyaan">${icon}</div>
+            <p class="text-xl font-bold text-gray-800">${message}</p>
+        </div>
+    `;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+};
+
+const triggerConfetti = () => {
+    const colors = ['#0a705e', '#9c2f2f', '#FFD700', '#FF69B4', '#00CED1', '#FF6347'];
+    for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'fixed pointer-events-none z-[9999]';
+        confetti.style.cssText = `
+            left: ${Math.random() * 100}vw;
+            top: -20px;
+            width: ${Math.random() * 10 + 5}px;
+            height: ${Math.random() * 10 + 5}px;
+            background: ${colors[Math.floor(Math.random() * colors.length)]};
+            border-radius: ${Math.random() > 0.5 ? '50%' : '0'};
+            animation: confetti-fall ${Math.random() * 2 + 2}s linear forwards;
+        `;
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 4000);
+    }
+};
+
+const triggerDiscoMode = () => {
+    const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+    let i = 0;
+    const body = document.body;
+    const originalBg = body.style.background;
+    const interval = setInterval(() => {
+        body.style.background = colors[i % colors.length];
+        body.style.transition = 'background 0.2s';
+        i++;
+    }, 200);
+    setTimeout(() => {
+        clearInterval(interval);
+        body.style.background = originalBg;
+    }, 3000);
+    showEasterEggToast('DISCO MODE ACTIVATED!', '~*~');
+};
+
+const triggerChaos404 = () => {
+    // Create chaos overlay
+    const chaos = document.createElement('div');
+    chaos.id = 'chaos-404';
+    chaos.className = 'fixed inset-0 z-[9999] flex items-center justify-center';
+    chaos.style.background = 'linear-gradient(45deg, #ff0000, #000)';
+    chaos.innerHTML = `
+        <div class="text-center p-8 max-w-2xl">
+            <div class="text-9xl mb-6 animate-bounce font-black text-white">X_X</div>
+            <h1 class="text-5xl font-black text-white mb-4" style="text-shadow: 4px 4px 0 #000, -2px -2px 0 #ff0000;">
+                OH NEE!
+            </h1>
+            <p class="text-2xl text-white mb-6" style="text-shadow: 2px 2px 0 #000;">
+                Wat heb je gedaan!? Dat is NIET de bedoeling!
+            </p>
+            <p class="text-lg text-red-200 mb-8">
+                Je hebt de geheime 404 code gevonden... Nu is alles stuk!
+            </p>
+            <button id="fix-chaos" class="px-8 py-4 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition-all">
+                Oeps, repareer alles!
+            </button>
+        </div>
+    `;
+    document.body.appendChild(chaos);
+    
+    // Mark homepage as corrupted
+    sessionStorage.setItem('homepageCorrupted', 'true');
+    
+    // Add fix button handler
+    document.getElementById('fix-chaos').addEventListener('click', () => {
+        sessionStorage.removeItem('homepageCorrupted');
+        chaos.remove();
+        window.location.hash = '#/';
+        window.location.reload();
+    });
+};
+
+const checkSearchEasterEgg = (query) => {
+    // Hidden easter eggs - only triggered by specific obscure searches
+    const easterEggs = {
+        'airfryer': { message: 'Geen airfryers gevonden!', icon: '???' },
+        'xyzzy': { action: 'confetti' },
+        'plugh': { action: 'disco' },
+        'konijn': { message: 'Je vond het konijnenhol!', icon: '^.^' },
+        'matrix': { message: 'Er is geen lepel...', icon: '{ }' },
+        'noot mansen': { message: 'De legende leeft!', icon: '#1' },
+        '404': { action: 'chaos404' }
+    };
+    
+    const egg = easterEggs[query];
+    if (egg) {
+        if (egg.action === 'confetti') {
+            triggerConfetti();
+            showEasterEggToast('PARTY TIME!', '***');
+        } else if (egg.action === 'disco') {
+            triggerDiscoMode();
+        } else if (egg.action === 'chaos404') {
+            triggerChaos404();
+        } else {
+            showEasterEggToast(egg.message, egg.icon);
+        }
+        return true;
+    }
+    return false;
+};
+
+// Logo click counter for easter egg
+let logoClickCount = 0;
+let logoClickTimer = null;
+
 const Header = () => {
     let header = document.querySelector('header');
     if (!header) {
@@ -210,6 +334,13 @@ const initHeaderInteractions = () => {
             if (e.key === 'Enter') {
                 const query = searchInput.value.trim().toLowerCase();
                 if (query) {
+                    // Check for easter eggs first
+                    if (checkSearchEasterEgg(query)) {
+                        searchInput.value = '';
+                        collapseSearch();
+                        return;
+                    }
+                    
                     // Check for page matches
                     const pages = {
                         'home': '#/',
@@ -268,6 +399,13 @@ const initHeaderInteractions = () => {
             if (e.key === 'Enter') {
                 const query = mobileSearchInput.value.trim().toLowerCase();
                 if (query) {
+                    // Check for easter eggs first
+                    if (checkSearchEasterEgg(query)) {
+                        mobileSearchInput.value = '';
+                        if (mobileNav) mobileNav.classList.add('hidden');
+                        return;
+                    }
+                    
                     const pages = {
                         'home': '#/',
                         'nieuws': '#/Nieuws',
@@ -320,6 +458,26 @@ const initHeaderInteractions = () => {
             }
         });
     }
+
+    // Logo click easter egg (requires 15 rapid clicks)
+    const logos = document.querySelectorAll('.logo-text');
+    logos.forEach(logo => {
+        logo.addEventListener('click', (e) => {
+            logoClickCount++;
+            clearTimeout(logoClickTimer);
+            
+            if (logoClickCount === 15) {
+                e.preventDefault();
+                triggerConfetti();
+                showEasterEggToast('Je hebt het geheime feestje gevonden!', '***');
+                logoClickCount = 0;
+            }
+            
+            logoClickTimer = setTimeout(() => {
+                logoClickCount = 0;
+            }, 1500);
+        });
+    });
 };
 
 export default Header;

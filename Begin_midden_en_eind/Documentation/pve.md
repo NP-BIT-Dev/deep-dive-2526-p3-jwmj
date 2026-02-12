@@ -40,4 +40,4 @@ Plan van aanpak:
 Julian: Maakt de backend, Maandag begonnen met API.
 Wouter: Maakt het designelement zal bij springen Front-end development.
 Jesse: Setup en pagina’s maken.
-Mikey: Prototyping en pagina’s maken.
+Mikey: Prototyping en pagina’s maken en refinement.

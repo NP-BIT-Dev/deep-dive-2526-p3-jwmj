@@ -44,7 +44,7 @@ const Bestuur = async () => {
     } catch (error) {
         console.error('Error loading bestuurders:', error);
         const container = document.getElementById('bestuur-container');
-        container.innerHTML = ErrorState("Kon bestuursleden niet laden", "Probeer de pagina te vernieuwen of kom later terug.");
+        container.innerHTML = ErrorState("Technische fout bij het laden.", "board");
     }
 }
 

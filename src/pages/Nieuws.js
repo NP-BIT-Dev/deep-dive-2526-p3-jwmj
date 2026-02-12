@@ -83,7 +83,7 @@ const fetchNews = async () => {
         
     } catch (error) {
         console.error('Error fetching news:', error);
-        newsContainer.innerHTML = ErrorState("Er ging iets mis bij het ophalen van het nieuws.");
+        newsContainer.innerHTML = ErrorState("Technische fout bij het laden.", "news");
     }
 }
 

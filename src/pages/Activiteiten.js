@@ -81,7 +81,7 @@ const fetchActivities = async () => {
         
     } catch (error) {
         console.error('Error fetching activities:', error);
-        container.innerHTML = ErrorState("Er ging iets mis bij het ophalen van de activiteiten.");
+        container.innerHTML = ErrorState("Technische fout bij het laden.", "activities");
     }
 }
 

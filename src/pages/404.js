@@ -1,6 +1,23 @@
 const Four04 = () => {
     document.title = "Schrijvershoek || 404 Not Found";
     const root = document.getElementById('root');
+    
+    // 5% chance of special error message
+    const specialMessages = [
+        { title: "Error 418", subtitle: "I'm a teapot", desc: "De server weigert koffie te zetten omdat het een theepot is." },
+        { title: "Error 451", subtitle: "Unavailable for Legal Reasons", desc: "Deze pagina is verwijderd op last van de Dorpsvereniging Geheime Dienst." },
+        { title: "Error 503", subtitle: "Service Unavailable", desc: "De hamster die onze server aandrijft is even pauze aan het nemen." },
+        { title: "Error 666", subtitle: "Cursed Page", desc: "Je hebt een vervloekte pagina gevonden. Veel geluk!" },
+        { title: "Error 42", subtitle: "Life, Universe & Everything", desc: "Je vroeg de verkeerde vraag. Probeer het nog eens over 7,5 miljoen jaar." }
+    ];
+    
+    const isSpecial = Math.random() < 0.05;
+    const special = isSpecial ? specialMessages[Math.floor(Math.random() * specialMessages.length)] : null;
+    
+    const errorTitle = special ? special.title : "404";
+    const errorSubtitle = special ? special.subtitle : "Pagina niet gevonden";
+    const errorDesc = special ? special.desc : "De pagina die je zoekt bestaat helaas niet.";
+    
     root.innerHTML = `
         <div class="four04-container">
             <style>
@@ -125,6 +142,15 @@ const Four04 = () => {
                 }
             </style>
             <main>
+                ${special ? `
+                    <div class="text-center p-8">
+                        <div class="text-8xl mb-4 font-black text-gray-300">X_X</div>
+                        <h1 class="text-6xl font-black text-cyaan mb-2">${errorTitle}</h1>
+                        <h2 class="text-2xl font-bold text-gray-600 mb-4">${errorSubtitle}</h2>
+                        <p class="text-gray-500 mb-8">${errorDesc}</p>
+                        <a href="#/" class="px-6 py-3 bg-cyaan text-white font-bold rounded-xl hover:bg-cyaan/80 transition-all">Terug naar Home</a>
+                    </div>
+                ` : `
                 <svg class="face" viewBox="0 0 320 380" width="320px" height="380px" aria-label="A 404 becomes a face, looks to the sides, and blinks. The 4s slide up, the 0 slides down, and then a mouth appears.">
                     <g fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="25">
                         <g class="face__eyes" transform="translate(0, 112.5)">
@@ -144,6 +170,7 @@ const Four04 = () => {
                         </g>
                     </g>
                 </svg>
+                `}
             </main>
         </div>
     `;
