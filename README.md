@@ -15,6 +15,8 @@ then run the index page with liveserver
 
 To set up the environment and install dependencies, run the following commands in your terminal:
 
+!! Tested on Python 3.10, 3.11, 3.12 & 3.13 !!
+
 ```bash
 # Create a virtual environment
 python -m venv .venv
@@ -44,3 +46,5 @@ The following routes are available in this application:
 | GET    | `/api/v1/news` | Retrieve a list of all news items |
 | POST   | `/api/v1/news` | Create a new news item |
 | DELETE | `/api/v1/news/{news_id}` | Delete a news item |
+| GET    | `/api/v1/activities` | Retrive a list of all activity items |
+| POST    | `/api/v1/activities`  | Create a new activity item |
