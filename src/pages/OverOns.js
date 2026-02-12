@@ -96,8 +96,8 @@ const OverOns = () => {
                     </div>
                 </div>
                 
-                <div class="mt-8 bg-gray-100 rounded-3xl h-64 flex items-center justify-center">
-                    <p class="text-gray-500">Kaart placeholder</p>
+                <div class="mt-8 bg-gray-100 rounded-3xl h-64 flex items-center justify-center overflow-hidden">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38267.662877271454!2d6.786994260989301!3d53.16890287033707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b7d4ea3866f8ff%3A0xb09ca3d949ee754f!2sZuidbroek!5e0!3m2!1sen!2snl!4v1770886995866!5m2!1sen!2snl" width="600" height="256" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>

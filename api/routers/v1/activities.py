@@ -23,3 +23,10 @@ async def create_activity(
 
     db.commit()
     return {"message": "Activity is gepost"}
+
+@router.delete("/{activity_id}")
+def delete_activity(activity_id: int, db: Session = Depends(get_db)):
+    success = activities_service.delete_activity_item(db, activity_id)
+    if not success:
+        raise HTTPException(status_code=404, detail="Geen airfryers gevonden")
+    return {"message": "Activiteit verwijderd"}
