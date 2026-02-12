@@ -35,7 +35,9 @@ const Home = (app) => {
                 <h2 class="text-3xl font-bold text-gray-800 mb-4">Lidmaatschappen</h2>
             </div>
             <div class="grid md:grid-cols-3 gap-8 items-start pt-8">
-                ${ (() => { let result = ''; for(let i = 0; i <= 2; i++) { result += Lidmaatschappen(i, "Beschrijving van lidmaatschap " + i, "€10 per maand", ["Voordeel 1", "Voordeel 2", "Voordeel 3"], "#", i); } return result; })() }
+                ${Lidmaatschappen(0, "Beschrijving van lidmaatschap 0", "€10 per maand", ["Voordeel 1", "Voordeel 2", "Voordeel 3"], "#", 0)}
+                ${Lidmaatschappen(1, "Beschrijving van lidmaatschap 1", "€10 per maand", ["Voordeel 1", "Voordeel 2", "Voordeel 3"], "#", 1)}
+                ${Lidmaatschappen(2, "Beschrijving van lidmaatschap 2", "€10 per maand", ["Voordeel 1", "Voordeel 2", "Voordeel 3"], "#", 2)}
             </div>
         </div>
     </div>

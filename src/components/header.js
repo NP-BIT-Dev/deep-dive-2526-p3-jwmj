@@ -201,11 +201,77 @@ const initHeaderInteractions = () => {
         }
     });
 
-    // Close search on Escape
+    // Search functionality
     if (searchInput) {
         searchInput.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 collapseSearch();
+            }
+            if (e.key === 'Enter') {
+                const query = searchInput.value.trim().toLowerCase();
+                if (query) {
+                    // Check for page matches
+                    const pages = {
+                        'home': '#/',
+                        'nieuws': '#/Nieuws',
+                        'news': '#/Nieuws',
+                        'activiteiten': '#/Activiteiten',
+                        'activities': '#/Activiteiten',
+                        'bestuur': '#/Bestuur',
+                        'board': '#/Bestuur',
+                        'over ons': '#/OverOns',
+                        'about': '#/OverOns',
+                        'contact': '#/Contact'
+                    };
+                    
+                    // Check for exact page match
+                    if (pages[query]) {
+                        window.location.hash = pages[query];
+                    } else {
+                        // Navigate to Nieuws page with search query
+                        window.location.hash = '#/Nieuws';
+                        // Store search query for Nieuws page to pick up
+                        sessionStorage.setItem('globalSearchQuery', query);
+                    }
+                    collapseSearch();
+                }
+            }
+        });
+    }
+
+    // Mobile search functionality
+    const mobileSearchInput = document.getElementById('mobile-search');
+    if (mobileSearchInput) {
+        mobileSearchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const query = mobileSearchInput.value.trim().toLowerCase();
+                if (query) {
+                    const pages = {
+                        'home': '#/',
+                        'nieuws': '#/Nieuws',
+                        'activiteiten': '#/Activiteiten',
+                        'bestuur': '#/Bestuur',
+                        'over ons': '#/OverOns'
+                    };
+                    
+                    if (pages[query]) {
+                        window.location.hash = pages[query];
+                    } else {
+                        window.location.hash = '#/Nieuws';
+                        sessionStorage.setItem('globalSearchQuery', query);
+                    }
+                    
+                    // Close mobile menu
+                    if (mobileNav) {
+                        mobileNav.classList.add('hidden');
+                        const lines = menuBtn?.querySelectorAll('span');
+                        if (lines) {
+                            lines[0].style.transform = 'none';
+                            lines[1].style.opacity = '1';
+                            lines[2].style.transform = 'none';
+                        }
+                    }
+                }
             }
         });
     }
