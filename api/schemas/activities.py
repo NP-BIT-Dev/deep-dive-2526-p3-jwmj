@@ -1,9 +1,10 @@
+from typing import Optional
 from pydantic import BaseModel, Field
 
 class ActivityBase(BaseModel):
     datum: str
-    activity: str
-    locatie: str
+    activity: Optional[str] = None
+    locatie: Optional[str] = None
 
 class ActivityCreate(ActivityBase):
     pass
@@ -11,8 +12,8 @@ class ActivityCreate(ActivityBase):
 class ActivityResponse(BaseModel):
     id: int
     datum: str
-    activity: str = Field(validation_alias="activiteit")
-    locatie: str
+    activity: Optional[str] = Field(default=None, validation_alias="activiteit")
+    locatie: Optional[str] = None
 
     class Config:
         from_attributes = True

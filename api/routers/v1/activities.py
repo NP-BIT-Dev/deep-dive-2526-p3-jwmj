@@ -2,7 +2,7 @@ from typing import List
 from fastapi import APIRouter, HTTPException, Depends, Form
 from sqlalchemy.orm import Session
 from utils.database import get_db
-from schemas.activities import ActivityResponse
+from schemas.activities import ActivityResponse, ActivityBase
 from models.activities import ActivityModel
 from services import activities_service
 
@@ -12,18 +12,25 @@ router = APIRouter(prefix="/activities")
 def read_activities(db: Session = Depends(get_db)):
     return activities_service.get_all_activities(db)
 
+def get_activity_form(
+    datum: str = Form(...),
+    activity: str = Form(...),
+    locatie: str = Form(...),
+) -> ActivityBase:
+    return ActivityBase(datum=datum, activity=activity, locatie=locatie)
+
 @router.post("/")
 async def create_activity(
-    activity: str = Form(...),
-    datum: str = Form(...),
-    locatie: str = Form(...),
+    activity_data: ActivityBase = Depends(get_activity_form),
     db: Session = Depends(get_db)
 ):
-    new_post = ActivityModel(datum=datum, activiteit=activity, locatie=locatie)
+    # The model uses 'activiteit', so we map it from the schema's 'activity' field
+    new_post = ActivityModel(
+        datum=activity_data.datum, activiteit=activity_data.activity, locatie=activity_data.locatie
+    )
     db.add(new_post)
-    db.flush()
-
     db.commit()
+    db.refresh(new_post)
     return {"message": "Activity is gepost"}
 
 @router.delete("/{activity_id}")

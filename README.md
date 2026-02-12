@@ -19,19 +19,19 @@ To set up the environment and install dependencies, run the following commands i
 
 ```bash
 # Create a virtual environment
-python -m venv .venv
+python -m venv ./api/.venv
 
 # Activate the environment (Windows)
-.venv\Scripts\activate
+.\api\.venv\Scripts\activate
 
 # Activate the environment (macOS/Linux)
-source .venv/bin/activate
+source ./api/.venv/bin/activate
 
 # Install requirements
-pip install -r /api/requirements.txt
+pip install -r ./api/requirements.txt
 
 # Run api
-py ./api/main.py 
+py ./api/main.py
 ```
 
 
