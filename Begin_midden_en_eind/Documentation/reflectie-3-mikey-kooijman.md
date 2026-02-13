@@ -44,9 +44,9 @@
 ## 04 Feedback
 
 **Reflecteer op ontvangen feedback van:**
-*   **Opdrachtgever:** -
-*   **Coach:** -
-*   **Medestudenten:** -
+*   **Opdrachtgever:** - Te ingewikkelde presentatie, mooi logo
+*   **Coach:** - Te veel technische termen
+*   **Medestudenten:** - Iets te gedetaileerd logo
 
 ## 05 Persoonlijke reflectie
 
