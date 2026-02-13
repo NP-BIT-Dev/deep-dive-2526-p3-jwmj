@@ -98,8 +98,7 @@ const checkSearchEasterEgg = (query) => {
         'konijn': { message: 'Je vond het konijnenhol!', icon: '^.^' },
         'matrix': { message: 'Er is geen lepel...', icon: '{ }' },
         'noot mansen': { message: 'De legende leeft!', icon: '#1' },
-        '404': { action: 'chaos404' },
-        'epstein': { action: 'redirect', url: 'https://www.justice.gov/epstein' }
+        '404': { action: 'chaos404' }
     };
     
     const egg = easterEggs[query];
@@ -111,8 +110,6 @@ const checkSearchEasterEgg = (query) => {
             triggerDiscoMode();
         } else if (egg.action === 'chaos404') {
             triggerChaos404();
-        } else if (egg.action === 'redirect') {
-            window.open(egg.url, '_blank');
         } else {
             showEasterEggToast(egg.message, egg.icon);
         }
@@ -215,7 +212,6 @@ const Header = () => {
                 <a href="/Activiteiten" class="mobile-nav-item block px-6 py-3 border-b border-gray-100 hover:bg-cyaan/5 hover:text-cyaan text-center transition-all duration-200" style="--mobile-index: 2;">Activiteiten</a>
                 <a href="/Bestuur" class="mobile-nav-item block px-6 py-3 border-b border-gray-100 hover:bg-cyaan/5 hover:text-cyaan text-center transition-all duration-200" style="--mobile-index: 3;">Bestuur</a>
                 <a href="/OverOns" class="mobile-nav-item block px-6 py-3 border-b border-gray-100 hover:bg-cyaan/5 hover:text-cyaan text-center transition-all duration-200" style="--mobile-index: 4;">Over Ons</a>
-                <a href="/Contact" class="mobile-nav-item block px-6 py-3 hover:bg-cyaan/5 hover:text-cyaan text-center transition-all duration-200" style="--mobile-index: 5;">Contact</a>
             </div>
         </div>
     </header>
