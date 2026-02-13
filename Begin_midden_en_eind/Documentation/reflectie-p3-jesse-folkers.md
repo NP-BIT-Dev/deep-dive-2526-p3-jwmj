@@ -71,12 +71,14 @@
 
     het zag er mooi uit het logo dat gedesign word met het wapen
     was een goeie verdieping en het was interresant om te zien hoe de
-    andere kant aan het werk ging
+    andere kant aan het werk ging. vroeg zich af of er een techneut nodig was
+    voor de backend en vond het jammer dat er geen foto's.  De presentatie werd te ingewikkeld
 
 ###    coach
 
     voor volgende keer het logo ook verwerken op de pagina en geen empty
     place holders en serieusere foto's als we wel de placeholders opvullen.
+    tijdens presenteren eerst voor stellen en goed afsluiten
 
 ###    medestudenten
 
@@ -97,4 +99,10 @@
 ### Wat zou jij persoonlijk anders doen?
 
     Ik zou persoonlijk niet veel anders doen alleen zou ik de
-    documentatie persoon als ik in mijn eentje werk beter bijhouden
+    documentatie persoon als ik in mijn eentje werk beter bijhouden en beter de contratie er
+    bijhouden 
+
+
+
+#### location
+Alles staat in de github class room hier: https://github.com/NP-BIT-Dev/deep-dive-2526-p3-jwmj
