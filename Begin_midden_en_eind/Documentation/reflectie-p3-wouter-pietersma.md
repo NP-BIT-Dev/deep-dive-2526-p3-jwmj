@@ -41,3 +41,14 @@ Terwijl ik vrees dat het meeste van deze lessen al verloren zullen zijn bij de t
 
 Wat zou jij persoonlijk anders doen?
 Ik zou graag met meer kennis over Javascript van start gaan zodat ik nuttiger ben voor de groep, daarnaast is er eigenlijk niks dat ik anders zou kunnen voor dit project.
+
+
+Feedback van client.
+Logo was mooi, onderzoek was goed, vroeg zich af of een Techneut nodig zou zijn voor de backend.
+Vond het jammer dat er weinig tot geen foto's present waren in het prototype.
+
+Feedback van de coach.
+Vroeg zich af waarom de logo niet zichtbaar was op de website.
+Vroeg zich af of de backend beveiligd was.
+Vond het jammer dat er weinig tot geen foto's present waren, adviseerde voortaan geed foto's van auto's te gebruiken wanneer niet relevant.
+Vroeg zich ook af hoe de front en backend met elkaar communiceren.
