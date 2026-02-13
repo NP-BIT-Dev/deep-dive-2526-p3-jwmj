@@ -45,7 +45,8 @@ Een logo, admin dashboard en een 100% werkende api die nu 70% werkt.
 Logo mooi, onderzoek mooi, indien techneut nodig was, weinig fotos
 
 ### Coach
-Afbeeldingen en niet op die manier opvulfotos
+Afbeeldingen en niet op die manier opvulfotos,
+Backend meer uitleggen kwa wat KAN het, niet de backend zelf laten zien
 
 ### Medestudenten
 Logo kan *te* gedetailleerd zijn waardoor het mis kan gaan als die word verkleint

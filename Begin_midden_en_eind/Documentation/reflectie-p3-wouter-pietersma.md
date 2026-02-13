@@ -52,3 +52,5 @@ Vroeg zich af waarom de logo niet zichtbaar was op de website.
 Vroeg zich af of de backend beveiligd was.
 Vond het jammer dat er weinig tot geen foto's present waren, adviseerde voortaan geed foto's van auto's te gebruiken wanneer niet relevant.
 Vroeg zich ook af hoe de front en backend met elkaar communiceren.
+Zelf voorstellen, presentatie beter afstemmen op client, design process meer laten zien.
+Geen hamburger menu's op grote pagina's, minder in-depth presenteren over Wireframe, simpel is niet altijd beter.
