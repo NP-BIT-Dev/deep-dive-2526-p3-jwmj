@@ -69,10 +69,19 @@
 
 ###    opdrachtgever
 
+    het zag er mooi uit het logo dat gedesign word met het wapen
+    was een goeie verdieping en het was interresant om te zien hoe de
+    andere kant aan het werk ging
+
 ###    coach
+
+    voor volgende keer het logo ook verwerken op de pagina en geen empty
+    place holders en serieusere foto's als we wel de placeholders opvullen.
 
 ###    medestudenten
 
+    Er was feedback over dat het logo erg gedetailleerd was dus op het
+    moment dat die gedownscaled word het detail verdwijnt.  
 
 ## Persoonlijke reflectie
 
@@ -83,7 +92,7 @@
 
 ### Wat neem je mee naar een volgend project?
 
-    De manier van uitleggen.
+    De manier van uitleggen. en de tips van reygan voor de placeholders op de pagina.
 
 ### Wat zou jij persoonlijk anders doen?
 
